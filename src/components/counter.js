@@ -1,19 +1,17 @@
 import React from 'react';
 
 // counter component expects label (session or break) and length from app
-const Counter = (props) => {
-
-    let label = props.label;
+const Counter = ({ label, length, onLengthChange }) => {
 
     const handleClick = (e) => {
         const name = label.toLowerCase();
-        const mod = e.target.innerHTML;
-        switch (mod) {
+        const operator = e.target.innerHTML;
+        switch (operator) {
             case "-":
-                props.onLengthChange(name, mod);
+                onLengthChange(name, operator);
                 break;
             case "+":
-                props.onLengthChange(name, mod);
+                onLengthChange(name, operator);
                 break;
             default: break;
         }
@@ -23,7 +21,7 @@ const Counter = (props) => {
         <div>
             <h3>{label}</h3>
             <p onClick={handleClick}>-</p>
-            <p>{props.length}</p>
+            <p>{length}</p>
             <p onClick={handleClick}>+</p>
         </div>
     );

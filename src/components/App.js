@@ -13,7 +13,7 @@ class App extends Component {
     };
   }
 
-  handleLengthChange(label, modifier) {
+  handleLengthChange(label, operator) {
     const key = `${label}Length`;
     console.log(key);
   }
