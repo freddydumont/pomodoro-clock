@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Counter from './counter';
 import '../style/App.css';
 
 class App extends Component {
@@ -15,6 +16,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <Counter type="Session" length={this.state.sessionLength} />
+        <Counter type="Break" length={this.state.breakLength} />
       </div>
     );
   }
