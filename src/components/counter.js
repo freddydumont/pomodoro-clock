@@ -4,16 +4,19 @@ import React from 'react';
 const Counter = ({ label, length, onLengthChange }) => {
 
     const handleClick = (e) => {
-        const name = label.toLowerCase();
         const operator = e.target.innerHTML;
-        switch (operator) {
-            case "-":
-                onLengthChange(name, operator);
-                break;
-            case "+":
-                onLengthChange(name, operator);
-                break;
-            default: break;
+        // length can't be smaller than 1
+        if (length > 1 || (length > 0 && operator === '+')) {
+            const name = label.toLowerCase();
+            switch (operator) {
+                case '-':
+                    onLengthChange(name, operator);
+                    break;
+                case '+':
+                    onLengthChange(name, operator);
+                    break;
+                default: break;
+            }
         }
     }
 
