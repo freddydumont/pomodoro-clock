@@ -13,19 +13,20 @@ class App extends Component {
     };
   }
 
-  handleLengthChange(type, modifier) {
-    console.log(type, modifier);
+  handleLengthChange(label, modifier) {
+    const key = `${label}Length`;
+    console.log(key);
   }
 
   render() {
     return (
       <div className="App">
         <Counter
-          type="Session"
+          label="Session"
           length={this.state.sessionLength}
           onLengthChange={this.handleLengthChange} />
         <Counter
-          type="Break"
+          label="Break"
           length={this.state.breakLength}
           onLengthChange={this.handleLengthChange} />
       </div>

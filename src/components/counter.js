@@ -1,12 +1,12 @@
 import React from 'react';
 
-// counter component expects type (session or break) and length from app
+// counter component expects label (session or break) and length from app
 const Counter = (props) => {
 
-    let type = props.type;
+    let label = props.label;
 
     const handleClick = (e) => {
-        const name = type.toLowerCase();
+        const name = label.toLowerCase();
         const mod = e.target.innerHTML;
         switch (mod) {
             case "-":
@@ -21,7 +21,7 @@ const Counter = (props) => {
 
     return (
         <div>
-            <h3>{type}</h3>
+            <h3>{label}</h3>
             <p onClick={handleClick}>-</p>
             <p>{props.length}</p>
             <p onClick={handleClick}>+</p>
