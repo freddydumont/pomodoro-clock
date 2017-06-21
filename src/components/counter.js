@@ -1,35 +1,32 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 // counter component expects type (session or break) and length from app
-class Counter extends Component {
-    constructor(props) {
-        super(props);
-    }
+const Counter = (props) => {
 
-    handleClick(e) {
-        const type = this.props.type;
+    let type = props.type;
+
+    const handleClick = (e) => {
+        const name = type.toLowerCase();
         const mod = e.target.innerHTML;
         switch (mod) {
             case "-":
-                this.props.handleLengthChange(type, mod);
+                props.onLengthChange(name, mod);
                 break;
             case "+":
-                this.props.handleLengthChange(type, mod);
+                props.onLengthChange(name, mod);
                 break;
             default: break;
         }
     }
 
-    render() {
-        return (
-            <div>
-                <h3>{this.props.type}</h3>
-                <p onClick={this.handleClick}>-</p>
-                <p>{this.props.length}</p>
-                <p onClick={this.handleClick}>+</p>
-            </div>
-        );
-    }
+    return (
+        <div>
+            <h3>{type}</h3>
+            <p onClick={handleClick}>-</p>
+            <p>{props.length}</p>
+            <p onClick={handleClick}>+</p>
+        </div>
+    );
 }
 
 export default Counter;

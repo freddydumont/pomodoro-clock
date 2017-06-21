@@ -13,11 +13,21 @@ class App extends Component {
     };
   }
 
+  handleLengthChange(type, modifier) {
+    console.log(type, modifier);
+  }
+
   render() {
     return (
       <div className="App">
-        <Counter type="Session" length={this.state.sessionLength} />
-        <Counter type="Break" length={this.state.breakLength} />
+        <Counter
+          type="Session"
+          length={this.state.sessionLength}
+          onLengthChange={this.handleLengthChange} />
+        <Counter
+          type="Break"
+          length={this.state.breakLength}
+          onLengthChange={this.handleLengthChange} />
       </div>
     );
   }
