@@ -1,0 +1,11 @@
+.counter {
+    padding: 10px;
+}
+
+.counter > h3 {
+    text-align: center;
+}
+
+.counter > span {
+    padding: 10px;
+}

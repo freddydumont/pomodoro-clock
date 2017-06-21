@@ -1,3 +1,5 @@
+import { Col, Button } from 'react-bootstrap';
+import '../style/counter.css'
 import React from 'react';
 
 // counter component expects label (session or break) and length from app
@@ -21,12 +23,12 @@ const Counter = ({ label, length, onLengthChange }) => {
     }
 
     return (
-        <div>
+        <Col xs={6} className="counter">
             <h3>{label}</h3>
-            <p onClick={handleClick}>-</p>
-            <p>{length}</p>
-            <p onClick={handleClick}>+</p>
-        </div>
+            <Button bsSize="small" onClick={handleClick}>-</Button>
+            <span>{length}</span>
+            <Button bsSize="small" onClick={handleClick}>+</Button>
+        </Col>
     );
 }
 
