@@ -11,11 +11,22 @@ class App extends Component {
       breakLength: 5,
       sessionLength: 25,
     };
+
+    this.handleLengthChange = this.handleLengthChange.bind(this);
   }
 
-  handleLengthChange(label, operator) {
+  handleLengthChange(label, op) {
+    // create key from label
     const key = `${label}Length`;
-    console.log(key);
+
+    // https://stackoverflow.com/questions/5834318/
+    // create operators functions from op strings
+    const operators = {
+      '+': key => { this.setState({ [key]: this.state[key] + 1 }) },
+      '-': key => { this.setState({ [key]: this.state[key] - 1 }) }
+    };
+
+    operators[op](key);
   }
 
   render() {
