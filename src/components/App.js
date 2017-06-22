@@ -2,6 +2,7 @@ import { Jumbotron, Grid, Row } from 'react-bootstrap';
 import React, { Component } from 'react';
 import Counter from './counter';
 import Timer from './timer';
+import StartButton from './start_button.js'
 import '../style/App.css';
 
 class App extends Component {
@@ -13,7 +14,7 @@ class App extends Component {
       breakLength: 5,
       sessionLength: 25,
       label: "Session",
-      countdown: 0
+      countdownStarted: false
     };
 
     this.handleLengthChange = this.handleLengthChange.bind(this);
@@ -51,6 +52,10 @@ class App extends Component {
             <Timer
               label={this.state.label}
               countdown={this.state.countdown} />
+          </Row>
+          <Row>
+            <StartButton
+              countdownStarted={this.state.countdownStarted} />
           </Row>
         </Grid>
       </Jumbotron>
