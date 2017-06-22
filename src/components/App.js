@@ -71,7 +71,7 @@ class App extends Component {
   render() {
     return (
       <Jumbotron className="App">
-        <Grid>
+        <Grid className="align-center">
           <Row>
             <Counter
               label="Session"

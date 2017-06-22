@@ -6,7 +6,7 @@ require("moment-duration-format");
 
 const Timer = ({ label, countdown }) => {
     return (
-        <Col xs={10} sm={8} md={6} className="align-center">
+        <Col>
             <h3>{label}</h3>
             <h3>{moment.duration(countdown, "m").format("hh:mm:ss")}</h3>
         </Col>
