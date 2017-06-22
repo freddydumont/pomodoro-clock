@@ -1,9 +1,11 @@
 import { Jumbotron, Grid, Row } from 'react-bootstrap';
 import React, { Component } from 'react';
+import moment from 'moment';
 import Counter from './counter';
 import Timer from './timer';
 import StartButton from './start_button.js'
 import '../style/App.css';
+require("moment-duration-format");
 
 class App extends Component {
   constructor(props) {
@@ -14,7 +16,8 @@ class App extends Component {
       breakLength: 5,
       sessionLength: 25,
       label: "Session",
-      countdownStarted: false
+      countdownStarted: false,
+      countdown: moment.duration(25, 'minutes').format("mm:ss")
     };
 
     this.handleLengthChange = this.handleLengthChange.bind(this);
