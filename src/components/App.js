@@ -15,7 +15,7 @@ class App extends Component {
       sessionLength: 25,
       label: "Session",
       countdownStarted: false,
-      countdown: 25
+      countdown: { minutes: 25 },
     };
 
     this.handleLengthChange = this.handleLengthChange.bind(this);
@@ -29,6 +29,9 @@ class App extends Component {
     });
 
     // if initial start, start countdown according to length
+    // const timer = setInterval(function () {
+    //   console.log("second");
+    // }, 1000)
 
     // if countdown is started, pause it
 
@@ -42,9 +45,9 @@ class App extends Component {
     // countdown is updated only when session counter is modified
     const checkLabel = () => {
       if (label === "session") {
-        return op === '+' ? this.state.countdown + 1 : this.state.countdown - 1;
+        return op === '+' ? this.state.countdown.minutes + 1 : this.state.countdown.minutes - 1;
       } else {
-        return this.state.countdown;
+        return this.state.countdown.minutes;
       }
     }
 
@@ -54,13 +57,13 @@ class App extends Component {
       '+': key => {
         this.setState({
           [key]: this.state[key] + 1,
-          countdown: checkLabel()
+          countdown: { minutes: checkLabel() }
         })
       },
       '-': key => {
         this.setState({
           [key]: this.state[key] - 1,
-          countdown: checkLabel()
+          countdown: { minutes: checkLabel() }
         })
       }
     };

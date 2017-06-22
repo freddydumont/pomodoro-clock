@@ -8,7 +8,7 @@ const Timer = ({ label, countdown }) => {
     return (
         <Col>
             <h3>{label}</h3>
-            <h3>{moment.duration(countdown, "m").format("hh:mm:ss")}</h3>
+            <h3>{moment.duration(countdown).format("hh:mm:ss")}</h3>
         </Col>
     );
 }
