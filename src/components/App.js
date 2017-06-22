@@ -1,6 +1,7 @@
 import { Jumbotron, Grid, Row } from 'react-bootstrap';
 import React, { Component } from 'react';
 import Counter from './counter';
+import Timer from './timer';
 import '../style/App.css';
 
 class App extends Component {
@@ -45,6 +46,11 @@ class App extends Component {
               label="Break"
               length={this.state.breakLength}
               onLengthChange={this.handleLengthChange} />
+          </Row>
+          <Row>
+            <Timer
+              label={this.state.label}
+              countdown={this.state.countdown} />
           </Row>
         </Grid>
       </Jumbotron>
