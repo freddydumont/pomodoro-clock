@@ -11,6 +11,8 @@ class App extends Component {
     this.state = {
       breakLength: 5,
       sessionLength: 25,
+      label: "Session",
+      countdown: 0
     };
 
     this.handleLengthChange = this.handleLengthChange.bind(this);
