@@ -18,6 +18,13 @@ class App extends Component {
     };
 
     this.handleLengthChange = this.handleLengthChange.bind(this);
+    this.handleStartPause = this.handleStartPause.bind(this);
+  }
+
+  handleStartPause() {
+    this.setState(prevState => {
+      return { countdownStarted: !prevState.countdownStarted };
+    });
   }
 
   handleLengthChange(label, op) {
@@ -55,7 +62,8 @@ class App extends Component {
           </Row>
           <Row>
             <StartButton
-              countdownStarted={this.state.countdownStarted} />
+              countdownStarted={this.state.countdownStarted}
+              onStartPause={this.handleStartPause} />
           </Row>
         </Grid>
       </Jumbotron>
