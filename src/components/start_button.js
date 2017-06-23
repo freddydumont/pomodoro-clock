@@ -1,9 +1,9 @@
 import { Button } from 'react-bootstrap';
 import React from 'react';
 
-const StartButton = ({ countdownStarted, onStartPause }) => {
+const StartButton = ({ isStarted, onStartPause }) => {
 
-    let btnLabel = countdownStarted ? "Pause" : "Start";
+    let btnLabel = isStarted ? "Pause" : "Start";
 
     const handleClick = (e) => {
         onStartPause();

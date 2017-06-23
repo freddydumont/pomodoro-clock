@@ -14,7 +14,7 @@ class App extends Component {
       breakLength: 5,
       sessionLength: 25,
       isSession: true,
-      countdownStarted: false,
+      isStarted: false,
       countdown: { minutes: 0, seconds: 2 },
     };
 
@@ -92,22 +92,30 @@ class App extends Component {
   }
 
   handleStartPause() {
-    // start or pause the clock according to countdownStarted
-    if (!this.state.countdownStarted) {
+    // start or pause the clock according to isStarted
+    if (!this.state.isStarted) {
       this.clock.start();
     } else {
       this.clock.pause();
     }
 
-    // switch countdownStarted
+    // switch isStarted
     this.setState(prevState => {
-      return { countdownStarted: !prevState.countdownStarted };
+      return { isStarted: !prevState.isStarted };
     });
   }
 
   handleLengthChange(label, op) {
     // create key from label
     const key = `${label}Length`;
+
+    // if countdown is started, countdown can't be modified
+
+    // if isSession is true, sessionLength can't be modified, but breakLength can
+
+    // if isSession is false, sessionLength can be modified, but breakLength can't
+
+    // if countdown is not started
 
     // countdown is updated only when session counter is modified
     const checkLabel = () => {
@@ -165,7 +173,7 @@ class App extends Component {
           </Row>
           <Row>
             <StartButton
-              countdownStarted={this.state.countdownStarted}
+              isStarted={this.state.isStarted}
               onStartPause={this.handleStartPause} />
           </Row>
         </Grid>
