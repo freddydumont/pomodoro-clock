@@ -15,7 +15,7 @@ class App extends Component {
       sessionLength: 25,
       label: "Session",
       countdownStarted: false,
-      countdown: { minutes: 25 },
+      countdown: { minutes: 25, seconds: 0 },
     };
 
     this.handleLengthChange = this.handleLengthChange.bind(this);
@@ -28,14 +28,36 @@ class App extends Component {
       return { countdownStarted: !prevState.countdownStarted };
     });
 
-    // if initial start, start countdown according to length
-    // const timer = setInterval(function () {
-    //   console.log("second");
-    // }, 1000)
-
-    // if countdown is started, pause it
-
-    // if countdown is paused, start it
+    // if initial start, start countdown according to countdown object
+    const timer = setInterval(() => {
+      // substract 1 second from countdown
+      this.setState(prevState => {
+        console.log(prevState.countdown.seconds);
+        return {
+          countdown: {
+            // using spread operator to destructure countdown to merge
+            ...prevState.countdown,
+            seconds: prevState.countdown.seconds - 1
+          }
+        };
+      });
+      // if countdown.seconds < 0, substract 1 minute and set second to 59
+      if (this.state.countdown.seconds < 0) {
+        this.setState(prevState => {
+          return {
+            countdown: {
+              minutes: prevState.countdown.minutes - 1,
+              seconds: 59
+            }
+          }
+        });
+      }
+      // if countdown.minutes < 0, stop interval and play the sound
+      if (this.state.countdown.minutes < 0) {
+        clearInterval(timer);
+        console.log("finished");
+      }
+    }, 1000)
   }
 
   handleLengthChange(label, op) {
@@ -57,13 +79,19 @@ class App extends Component {
       '+': key => {
         this.setState({
           [key]: this.state[key] + 1,
-          countdown: { minutes: checkLabel() }
+          countdown: {
+            ...this.state.countdown,
+            minutes: checkLabel()
+          }
         })
       },
       '-': key => {
         this.setState({
           [key]: this.state[key] - 1,
-          countdown: { minutes: checkLabel() }
+          countdown: {
+            ...this.state.countdown,
+            minutes: checkLabel()
+          }
         })
       }
     };
