@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Counter from './counter';
 import Timer from './timer';
 import StartButton from './start_button.js'
+import ResetButton from './reset_button.js'
 import '../style/App.css';
 
 class App extends Component {
@@ -18,9 +19,13 @@ class App extends Component {
       countdown: { minutes: 25, seconds: 0 },
     };
 
+    // copy of initial state for reset button
+    this.initialState = this.state;
+
     this.handleLengthChange = this.handleLengthChange.bind(this);
     this.handleStartPause = this.handleStartPause.bind(this);
     this.handleTimerEnd = this.handleTimerEnd.bind(this);
+    this.handleReset = this.handleReset.bind(this);
 
     // creating a clock object to manage start and pause
     // https://stackoverflow.com/questions/12487352/
@@ -159,6 +164,11 @@ class App extends Component {
     }
   }
 
+  handleReset() {
+    this.clock.pause();
+    this.setState(this.initialState);
+  }
+
   render() {
     return (
       <Jumbotron className="App">
@@ -179,6 +189,7 @@ class App extends Component {
               countdown={this.state.countdown} />
           </Row>
           <Row>
+            <ResetButton onReset={this.handleReset} />
             <StartButton
               isStarted={this.state.isStarted}
               onStartPause={this.handleStartPause} />
