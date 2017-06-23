@@ -15,7 +15,7 @@ class App extends Component {
       sessionLength: 25,
       label: "Session",
       countdownStarted: false,
-      countdown: { minutes: 25, seconds: 0 },
+      countdown: { minutes: 0, seconds: 2 },
     };
 
     this.handleLengthChange = this.handleLengthChange.bind(this);
@@ -49,7 +49,7 @@ class App extends Component {
           }
           // if countdown.minutes < 0, stop interval and play the sound
           if (this.state.countdown.minutes < 0) {
-            clearInterval(this.timer);
+            this.handleStartPause();
             // using audio from external source
             // local files output errors: DOMException: Failed to load because no
             // supported source was found or Uncaught (in promise) DOMException: 
