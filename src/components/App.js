@@ -15,7 +15,7 @@ class App extends Component {
       sessionLength: 25,
       isSession: true,
       isStarted: false,
-      countdown: { minutes: 0, seconds: 2 },
+      countdown: { minutes: 25, seconds: 0 },
     };
 
     this.handleLengthChange = this.handleLengthChange.bind(this);
@@ -109,20 +109,24 @@ class App extends Component {
     // create key from label
     const key = `${label}Length`;
 
-    // if countdown is started, countdown can't be modified
-
-    // if isSession is true, sessionLength can't be modified, but breakLength can
-
-    // if isSession is false, sessionLength can be modified, but breakLength can't
-
-    // if countdown is not started
-
-    // countdown is updated only when session counter is modified
-    const checkLabel = () => {
-      if (label === "session") {
+    // countdown is updated only when the proper buttons are pressed at the proper time
+    // if countdown is paused and sessionLength is updated, the session countdown will
+    // reflect the changes so that the total sessionLength is respected
+    const checkLabel = str => {
+      if (label === str) {
         return op === '+' ? this.state.countdown.minutes + 1 : this.state.countdown.minutes - 1;
       } else {
         return this.state.countdown.minutes;
+      }
+    }
+
+    const adjustCountdown = () => {
+      if (this.state.isSession) {
+        // if during session, session buttons must be pressed
+        return checkLabel("session");
+      } else {
+        // if during break, break buttons must be pressed
+        return checkLabel("break");
       }
     }
 
@@ -134,7 +138,7 @@ class App extends Component {
           [key]: this.state[key] + 1,
           countdown: {
             ...this.state.countdown,
-            minutes: checkLabel()
+            minutes: adjustCountdown()
           }
         })
       },
@@ -143,13 +147,16 @@ class App extends Component {
           [key]: this.state[key] - 1,
           countdown: {
             ...this.state.countdown,
-            minutes: checkLabel()
+            minutes: adjustCountdown()
           }
         })
       }
     };
 
-    operators[op](key);
+    // if countdown is started, nothing can be changed
+    if (!this.state.isStarted) {
+      operators[op](key);
+    }
   }
 
   render() {
