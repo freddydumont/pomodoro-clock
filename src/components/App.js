@@ -13,7 +13,7 @@ class App extends Component {
     this.state = {
       breakLength: 5,
       sessionLength: 25,
-      label: "Session",
+      isSession: true,
       countdownStarted: false,
       countdown: { minutes: 0, seconds: 2 },
     };
@@ -71,16 +71,16 @@ class App extends Component {
     // Unable to decode audio data
     const gong = new Audio("https://soundbible.com/grab.php?id=1496&type=mp3");
     gong.play();
-    // set label and countdown according to opposite of prevState
+    // set isSession and countdown according to opposite of prevState
     this.setState(prevState => {
-      return prevState.label === "Session" ? {
-        label: "Break",
+      return prevState.isSession ? {
+        isSession: false,
         countdown: {
           minutes: prevState.breakLength,
           seconds: 0
         }
       } : {
-          label: "Session",
+          isSession: true,
           countdown: {
             minutes: prevState.sessionLength,
             seconds: 0
@@ -160,7 +160,7 @@ class App extends Component {
           </Row>
           <Row>
             <Timer
-              label={this.state.label}
+              isSession={this.state.isSession}
               countdown={this.state.countdown} />
           </Row>
           <Row>
