@@ -20,6 +20,7 @@ class App extends Component {
 
     this.handleLengthChange = this.handleLengthChange.bind(this);
     this.handleStartPause = this.handleStartPause.bind(this);
+    this.handleTimerEnd = this.handleTimerEnd.bind(this);
 
     // creating a clock object to manage start and pause
     // https://stackoverflow.com/questions/12487352/
@@ -47,15 +48,9 @@ class App extends Component {
               }
             });
           }
-          // if countdown.minutes < 0, stop interval and play the sound
+          // if countdown.minutes < 0, call handler
           if (this.state.countdown.minutes < 0) {
-            this.handleStartPause();
-            // using audio from external source
-            // local files output errors: DOMException: Failed to load because no
-            // supported source was found or Uncaught (in promise) DOMException: 
-            // Unable to decode audio data
-            const gong = new Audio("https://soundbible.com/grab.php?id=1496&type=mp3");
-            gong.play();
+            this.handleTimerEnd();
           }
         }, 1000)
       },
@@ -65,6 +60,36 @@ class App extends Component {
       }
     }
   };
+
+  handleTimerEnd() {
+    // stop the timer
+    this.clock.pause();
+    // play the sound
+    // using audio from external source
+    // local files output errors: DOMException: Failed to load because no
+    // supported source was found or Uncaught (in promise) DOMException: 
+    // Unable to decode audio data
+    const gong = new Audio("https://soundbible.com/grab.php?id=1496&type=mp3");
+    gong.play();
+    // set label and countdown according to opposite of prevState
+    this.setState(prevState => {
+      return prevState.label === "Session" ? {
+        label: "Break",
+        countdown: {
+          minutes: prevState.breakLength,
+          seconds: 0
+        }
+      } : {
+          label: "Session",
+          countdown: {
+            minutes: prevState.sessionLength,
+            seconds: 0
+          }
+        };
+    });
+    // start the timer
+    this.clock.start();
+  }
 
   handleStartPause() {
     // start or pause the clock according to countdownStarted
