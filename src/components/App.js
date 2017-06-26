@@ -1,5 +1,6 @@
 import { Grid, Row } from 'react-bootstrap';
 import React, { Component } from 'react';
+import { Howl } from 'howler';
 import Counter from './counter';
 import Timer from './timer';
 import StartButton from './start_button.js'
@@ -70,12 +71,31 @@ class App extends Component {
     // stop the timer
     this.clock.pause();
     // play the sound
-    // using audio from external source
-    // local files output errors: DOMException: Failed to load because no
-    // supported source was found or Uncaught (in promise) DOMException: 
-    // Unable to decode audio data
-    const gong = new Audio("https://soundbible.com/grab.php?id=1496&type=mp3");
-    gong.play();
+    /* using audio from external source
+     * https://freesound.org/people/loofa/sounds/23609/
+     * local files output errors: DOMException: Failed to load because no
+     * supported source was found or Uncaught (in promise) DOMException: 
+     * Unable to decode audio data */
+    const gong = new Howl({
+      src: ["http://freesound.org/data/previews/23/23609_149377-lq.mp3"],
+      html5: true
+    });
+
+    // using a simple recursive function with a bool parameter
+    // to play the sound twice
+    const playTwice = (isPlayed) => {
+      gong.play();
+      gong.once('end', () => {
+        if (isPlayed) {
+          return;
+        } else {
+          return playTwice(true);
+        }
+      });
+    }
+
+    playTwice(false);
+
     // set isSession and countdown according to opposite of prevState
     this.setState(prevState => {
       return prevState.isSession ? {
