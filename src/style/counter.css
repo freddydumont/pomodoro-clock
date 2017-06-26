@@ -1,5 +1,5 @@
 .counter {
-    padding: 10px;
+    margin: 10px;
 }
 
 .counter > h3 {
@@ -7,5 +7,5 @@
 }
 
 .counter > span {
-    padding: 10px;
+    margin: 10px;
 }

@@ -1,4 +1,4 @@
-import { Jumbotron, Grid, Row } from 'react-bootstrap';
+import { Grid, Row } from 'react-bootstrap';
 import React, { Component } from 'react';
 import Counter from './counter';
 import Timer from './timer';
@@ -171,8 +171,8 @@ class App extends Component {
 
   render() {
     return (
-      <Jumbotron className="App">
-        <Grid className="align-center">
+      <div className="image-container">
+        <Grid className="align-over-image">
           <Row>
             <Counter
               label="Session"
@@ -195,7 +195,7 @@ class App extends Component {
               onStartPause={this.handleStartPause} />
           </Row>
         </Grid>
-      </Jumbotron>
+      </div>
     );
   }
 }

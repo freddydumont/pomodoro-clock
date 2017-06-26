@@ -1,4 +1,51 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    background: url(../images/bg.jpg) no-repeat center fixed;
+    background-size: cover;
+}
+
+#root {
+    height: 100vh;
+}
+
+.image-container {
+    /* original image:
+    http://www.michaelbackmanltd.com/sitebuilder/images/Burmese_Temple_Chime_2_-600x468.jpg */
+    background: url(../images/gong.png) no-repeat center fixed;
+    background-position-y: 0;
+}
+
+@media only screen and (max-width: 719px) {
+    .image-container {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-size: 30vh;
+    }
+}
+
+@media only screen and (min-width: 720px) {
+    .image-container {
+        height: 500px;
+        position: relative;
+        background-size: auto;
+    }
+
+    .align-over-image {
+    position: absolute;
+    left: 50%;
+    top: 60%;
+    transform: translate(-50%, -50%);
+    }
+}
+
 .row {
+    margin: 10px;
     justify-content: center;
     text-align: center;
 }
