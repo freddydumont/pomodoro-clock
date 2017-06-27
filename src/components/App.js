@@ -118,11 +118,7 @@ class App extends Component {
 
   handleStartPause() {
     // start or pause the clock according to isStarted
-    if (!this.state.isStarted) {
-      this.clock.start();
-    } else {
-      this.clock.pause();
-    }
+    !this.state.isStarted ? this.clock.start() : this.clock.pause();
 
     // switch isStarted
     this.setState(prevState => {
