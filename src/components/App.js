@@ -192,7 +192,7 @@ class App extends Component {
   render() {
     return (
       <div className="image-container">
-        <Grid className="align-over-image">
+        <Grid bsClass="controls-container">
           <Row>
             <Counter
               label="Session"
@@ -203,7 +203,7 @@ class App extends Component {
               length={this.state.breakLength}
               onLengthChange={this.handleLengthChange} />
           </Row>
-          <Row>
+          <Row className="component-bg" >
             <Timer
               isSession={this.state.isSession}
               countdown={this.state.countdown} />

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+
 html, body {
     height: 100%;
 }
@@ -7,8 +9,26 @@ body {
     background-size: cover;
 }
 
+h3, h6 {
+    color: #F6D9A1;
+    font-family: 'Ubuntu', sans-serif;
+}
+
 #root {
     height: 100vh;
+}
+
+.row {
+    margin: 10px;
+    justify-content: space-around;
+    text-align: center;
+}
+
+
+.component-bg {
+    background-color: rgba(50, 43, 21, 0.75);
+    border-radius: 5px;
+    padding-top: 8px;
 }
 
 .image-container {
@@ -27,25 +47,24 @@ body {
         align-items: center;
         background-size: 30vh;
     }
+
+    .controls-container {
+        background-color: rgba(109, 92, 72, 0.75);
+        border-radius: 5px;
+    }
 }
 
 @media only screen and (min-width: 720px) {
     .image-container {
         height: 500px;
         position: relative;
-        background-size: auto;
+        background-size: 80vh;
     }
 
-    .align-over-image {
-    position: absolute;
-    left: 50%;
-    top: 60%;
-    transform: translate(-50%, -50%);
+    .controls-container {
+        position: absolute;
+        left: 50.75%;
+        top: 65%;
+        transform: translate(-50%, -50%);
     }
-}
-
-.row {
-    margin: 10px;
-    justify-content: center;
-    text-align: center;
 }

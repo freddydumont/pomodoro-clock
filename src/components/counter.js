@@ -24,7 +24,7 @@ const Counter = ({ label, length, onLengthChange }) => {
 
     return (
         <Col xs={6} className="counter">
-            <h3>{label}</h3>
+            <h6>{label} Length</h6>
             <Button bsSize="small" onClick={handleClick}>-</Button>
             <span>{length}</span>
             <Button bsSize="small" onClick={handleClick}>+</Button>
