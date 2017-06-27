@@ -145,14 +145,10 @@ class App extends Component {
       }
     }
 
+    // if during session, session buttons must be pressed
+    // if during break, break buttons must be pressed
     const adjustCountdown = () => {
-      if (this.state.isSession) {
-        // if during session, session buttons must be pressed
-        return checkLabel("session");
-      } else {
-        // if during break, break buttons must be pressed
-        return checkLabel("break");
-      }
+      return this.state.isSession ? checkLabel("session") : checkLabel("break");
     }
 
     // https://stackoverflow.com/questions/5834318/
