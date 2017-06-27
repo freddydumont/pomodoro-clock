@@ -134,11 +134,8 @@ class App extends Component {
     // if countdown is paused and sessionLength is updated, the session countdown will
     // reflect the changes so that the total sessionLength is respected
     const checkLabel = str => {
-      if (label === str) {
-        return op === '+' ? this.state.countdown.minutes + 1 : this.state.countdown.minutes - 1;
-      } else {
-        return this.state.countdown.minutes;
-      }
+      return label === str ? (op === '+' ? this.state.countdown.minutes + 1 :
+        this.state.countdown.minutes - 1) : this.state.countdown.minutes;
     }
 
     // if during session, session buttons must be pressed
