@@ -1,4 +1,5 @@
 import { Button } from 'react-bootstrap';
+import "../style/buttons.css"
 import React from 'react';
 
 const ResetButton = ({ onReset }) => {
@@ -8,7 +9,7 @@ const ResetButton = ({ onReset }) => {
     }
 
     return (
-        <Button onClick={handleClick}>
+        <Button onClick={handleClick} className="button">
             Reset
         </Button>
     );

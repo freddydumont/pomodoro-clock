@@ -1,0 +1,8 @@
+.button {
+    background-color: rgba(50, 43, 21, 0.75);
+    border: 0;
+    border-radius: 5px;
+    box-shadow:inset 0 -10px 10px 3px rgba(50, 43, 21, 1);
+    color: #F6D9A1;
+    cursor: pointer;
+}

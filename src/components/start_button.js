@@ -1,4 +1,5 @@
 import { Button } from 'react-bootstrap';
+import "../style/buttons.css"
 import React from 'react';
 
 const StartButton = ({ isStarted, onStartPause }) => {
@@ -10,7 +11,7 @@ const StartButton = ({ isStarted, onStartPause }) => {
     }
 
     return (
-        <Button onClick={handleClick}>
+        <Button onClick={handleClick} className="button">
             {btnLabel}
         </Button>
     );
