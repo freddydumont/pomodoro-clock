@@ -7,20 +7,24 @@ html, body {
 body {
     background: url(../images/bg.jpg) no-repeat center fixed;
     background-size: cover;
+    font-family: 'Ubuntu', sans-serif;
 }
 
 h3, h6 {
     color: #F6D9A1;
-    font-family: 'Ubuntu', sans-serif;
 }
 
 #root {
     height: 100vh;
 }
 
+.num {
+    color: #F1F7ED;
+}
+
 .row {
-    margin: 10px;
     justify-content: space-around;
+    margin: 10px;
     text-align: center;
 }
 

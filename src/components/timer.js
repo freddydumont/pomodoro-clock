@@ -8,7 +8,7 @@ const Timer = ({ isSession, countdown }) => {
     return (
         <Col>
             <h3>{isSession ? "Session" : "Break"}</h3>
-            <h3>{moment.duration(countdown).format("hh:mm:ss")}</h3>
+            <h3 className="num" >{moment.duration(countdown).format("hh:mm:ss")}</h3>
         </Col>
     );
 }

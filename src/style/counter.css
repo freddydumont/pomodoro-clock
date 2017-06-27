@@ -1,5 +1,5 @@
 .counter {
-    margin: 10px;
+    margin: 0 10px;
 }
 
 .counter > h3 {
@@ -7,5 +7,15 @@
 }
 
 .counter > span {
+    color: #F1F7ED;
+    font-size: 1.25rem;
+    line-height: 0;
     margin: 10px;
+    user-select: none;
+}
+
+.operator {
+    color: #F6D9A1 !important;
+    cursor: pointer;
+    font-size: 1.5rem;
 }

@@ -1,4 +1,4 @@
-import { Col, Button } from 'react-bootstrap';
+import { Col } from 'react-bootstrap';
 import '../style/counter.css'
 import React from 'react';
 
@@ -25,9 +25,9 @@ const Counter = ({ label, length, onLengthChange }) => {
     return (
         <Col xs={6} className="counter">
             <h6>{label} Length</h6>
-            <Button bsSize="small" onClick={handleClick}>-</Button>
+            <span onClick={handleClick} className="operator" >-</span>
             <span>{length}</span>
-            <Button bsSize="small" onClick={handleClick}>+</Button>
+            <span onClick={handleClick} className="operator" >+</span>
         </Col>
     );
 }
