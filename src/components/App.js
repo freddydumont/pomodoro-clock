@@ -86,11 +86,7 @@ class App extends Component {
     const playTwice = (isPlayed) => {
       gong.play();
       gong.once('end', () => {
-        if (isPlayed) {
-          return;
-        } else {
-          return playTwice(true);
-        }
+        if (!isPlayed) { return playTwice(true); }
       });
     }
 
