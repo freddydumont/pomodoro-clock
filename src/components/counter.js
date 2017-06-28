@@ -9,16 +9,7 @@ const Counter = ({ label, length, onLengthChange }) => {
         const operator = e.target.innerHTML;
         // length can't be smaller than 1
         if (length > 1 || (length > 0 && operator === '+')) {
-            const name = label.toLowerCase();
-            switch (operator) {
-                case '-':
-                    onLengthChange(name, operator);
-                    break;
-                case '+':
-                    onLengthChange(name, operator);
-                    break;
-                default: break;
-            }
+            onLengthChange(label.toLowerCase(), operator);
         }
     }
 
