@@ -2,7 +2,7 @@ import { Col } from 'react-bootstrap'
 import React from 'react';
 // for formatting countdown
 import moment from 'moment';
-require("moment-duration-format");
+import "moment-duration-format";
 
 const Timer = ({ isSession, countdown }) => {
     return (
