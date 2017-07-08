@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+@import '../../node_modules/include-media/dist/_include-media.scss';
+
+html, body {
+    height: 100%;
+}
+
+body {
+    background: url(../images/bg.jpg) no-repeat center fixed;
+    background-size: cover;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+h3, h6 {
+    color: #F6D9A1;
+}
+
+#root {
+    height: 100vh;
+}
+
+.num {
+    color: #F1F7ED;
+}
+
+.row {
+    justify-content: space-around;
+    margin: 10px;
+    text-align: center;
+}
+
+
+.component-bg {
+    background-color: rgba(50, 43, 21, 0.75);
+    border-radius: 5px;
+    padding-top: 8px;
+}
+
+.image-container {
+    /* original image:
+    http://www.michaelbackmanltd.com/sitebuilder/images/Burmese_Temple_Chime_2_-600x468.jpg */
+    background: url(../images/gong.png) no-repeat center fixed;
+    background-position-y: 0;
+}
+
+@media only screen and (max-width: 719px) {
+    .image-container {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-size: 30vh;
+    }
+
+    .controls-container {
+        background-color: rgba(109, 92, 72, 0.75);
+        border-radius: 5px;
+    }
+}
+
+@media only screen and (min-width: 720px) {
+    .image-container {
+        height: 75vh;
+        position: relative;
+        background-size: 75vh;
+    }
+
+    .controls-container {
+        position: absolute;
+        left: 50.75%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
