@@ -6,6 +6,7 @@ import Timer from './timer';
 import StartButton from './start_button.js'
 import ResetButton from './reset_button.js'
 import '../style/App.css';
+import gongSound from '../gong.mp3';
 
 class App extends Component {
   constructor(props) {
@@ -71,13 +72,8 @@ class App extends Component {
     // stop the timer
     this.clock.pause();
     // play the sound
-    /* using audio from external source
-     * https://freesound.org/people/loofa/sounds/23609/
-     * local files output errors: DOMException: Failed to load because no
-     * supported source was found or Uncaught (in promise) DOMException: 
-     * Unable to decode audio data */
     const gong = new Howl({
-      src: ["http://freesound.org/data/previews/23/23609_149377-lq.mp3"],
+      src: [gongSound],
       html5: true
     });
 
